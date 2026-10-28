@@ -1,7 +1,7 @@
 async function evaluacionn(){
     try{
-        const uri="http:localhost:11434/v1/systemone";
-        const requerimientos="ell usuarios ingresa su email y su contraseña, el sistema evalua si es valido o no";
+        const uri="https://ominous-disco-wv7pwj747v54c54wp-11434.app.github.dev/v1/systemone";
+        const requerimientos="e l usuarios ingresa su email y su contraseña, el sistema evalua si es valido o no";
         const data={
             model: "d1-omni:600m",
             state: requerimientos,
@@ -26,11 +26,10 @@ async function evaluacionn(){
                 body: JSON.stringify(data)
             }
         );
-        if (!response.ok) {
-            throw new Error(`Error HTTP ${response.status}: ${response.statusText}`);
-        }
         const resultado=await response.json();
+        const condicion=resultado.answers.condicion.noul;
         console.log("Conexion con la API exitosa: ",resultado);
+        console.log("condicion: ",condicion)
     } catch(error){
         console.log("ups algo fallo",error.message);
         throw error;
